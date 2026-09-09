@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Data Anggota — Portal Pengurus HISKI Jabar</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="../assets/img/favicon.png">
+<link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="portal">
+
+<div class="portal-shell">
+  <aside class="portal-side" id="portalSide"></aside>
+
+  <div class="portal-main">
+    <header class="portal-top" id="portalTop"></header>
+
+    <div class="portal-body" id="portalIsi">
+      <section class="panel">
+        <div class="panel-head">
+          <h3>Pengurus &amp; anggota</h3>
+          <span class="badge badge-neutral" id="anggotaInfo">—</span>
+          <div class="spacer"></div>
+          <button class="btn btn-outline btn-sm" onclick="HISKI_PORTAL.toast('Demo: ekspor ke Excel aktif pada versi produksi.')">Ekspor Excel</button>
+        </div>
+
+        <div class="toolbar">
+          <input type="search" id="cariAnggota" placeholder="Cari nama, jabatan, atau unsur kepengurusan…" aria-label="Cari nama">
+          <select id="filterKategoriAnggota" aria-label="Saring unsur kepengurusan"></select>
+        </div>
+
+        <div class="panel-body flush">
+          <div class="table-wrap" style="border:none;border-radius:0">
+            <table class="data">
+              <thead><tr><th>Nomor</th><th>Nama</th><th>Jabatan</th><th>Unsur</th><th>Institusi</th><th>Status</th></tr></thead>
+              <tbody id="anggotaBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <div class="note">
+        <b>Sudah sesuai SK Nomor 19/SK/HISKI/VIII/2026</b> untuk periode 2026–2030. Kolom institusi masih kosong
+        karena datanya belum ada. Basis data anggota umum (di luar pengurus) ditambahkan setelah pendataan.<br><br>
+        <b>Data pribadi.</b> Pada versi produksi, akses halaman ini dibatasi peran (Ketua dan Sekretaris),
+        setiap pembukaan tercatat dalam log, serta nomor telepon dan alamat tidak ditampilkan pada tabel umum.
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/portal.js"></script>
+<script>
+  var sesi = HISKI_PORTAL.pasangKerangka({
+    aktif: 'anggota',
+    judul: 'Data Anggota',
+    sub: 'Basis data keanggotaan komisariat'
+  });
+  if (sesi) {
+    if (sesi.peran !== 'ketua' && sesi.peran !== 'sekretaris') {
+      document.getElementById('portalIsi').innerHTML =
+        '<section class="panel"><div class="panel-body"><div class="empty">' +
+        '<h3 style="font-family:var(--font-body);font-size:1.05rem">Akses ditolak</h3>' +
+        '<p style="margin:0">Halaman ini hanya dapat dibuka oleh Ketua dan Sekretaris komisariat.</p>' +
+        '<a class="btn btn-outline btn-sm" href="dashboard.html" style="margin-top:16px">Kembali ke dasbor</a>' +
+        '</div></div></section>';
+    } else {
+      HISKI_PORTAL.halamanAnggota();
+    }
+  }
+</script>
+</body>
+</html>

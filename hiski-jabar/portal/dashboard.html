@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dasbor — Portal Pengurus HISKI Jabar</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="../assets/img/favicon.png">
+<link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="portal">
+
+<div class="portal-shell">
+  <aside class="portal-side" id="portalSide"></aside>
+
+  <div class="portal-main">
+    <header class="portal-top" id="portalTop"></header>
+
+    <div class="portal-body">
+
+      <div class="stat-grid" id="dasborStat"></div>
+
+      <div class="split-2">
+        <section class="panel">
+          <div class="panel-head">
+            <h3>Surat terbaru</h3>
+            <div class="spacer"></div>
+            <a class="row-action" href="surat.html">Buka arsip surat</a>
+          </div>
+          <div class="panel-body flush">
+            <div class="table-wrap" style="border:none;border-radius:0">
+              <table class="data">
+                <thead><tr><th>Nomor</th><th>Perihal</th><th>Jenis</th><th>Tanggal</th><th></th></tr></thead>
+                <tbody id="suratTerbaru"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <div class="grid" style="gap:24px">
+          <section class="panel">
+            <div class="panel-head"><h3>Agenda pengurus</h3></div>
+            <div class="panel-body"><ul class="timeline-mini" id="agendaInternal" style="padding:0;margin:0"></ul></div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head"><h3>Kepengurusan</h3></div>
+            <div class="panel-body">
+              <div style="display:flex;align-items:baseline;gap:10px">
+                <b style="font-family:var(--font-display);font-size:2.4rem;line-height:1;color:var(--navy-900)" id="statAnggota">–</b>
+                <span class="muted small">nama pengurus periode 2026–2030</span>
+              </div>
+              <p class="small muted" style="margin-top:12px">Sesuai SK Nomor 19/SK/HISKI/VIII/2026 tanggal 13 Agustus 2026.</p>
+              <a class="btn btn-outline btn-sm btn-block" href="anggota.html" style="margin-top:14px">Lihat data pengurus</a>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <section class="panel">
+        <div class="panel-head"><h3>Aktivitas terbaru</h3></div>
+        <div class="panel-body"><ul class="timeline-mini" id="aktivitasTerbaru" style="padding:0;margin:0"></ul></div>
+      </section>
+
+      <p class="small muted" style="margin:0">Portal versi demo. Seluruh data bersifat contoh dan hanya tersimpan di peramban Anda.</p>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/portal.js"></script>
+<script>
+  var sesi = HISKI_PORTAL.pasangKerangka({
+    aktif: 'dashboard',
+    judul: 'Dasbor',
+    sub: 'Ringkasan surat, agenda, dan aktivitas komisariat'
+  });
+  if (sesi) {
+    HISKI_PORTAL.halamanDasbor();
+    // Bendahara tidak berwenang membuka basis data anggota
+    if (sesi.peran === 'bendahara') {
+      document.querySelectorAll('a[href="anggota.html"]').forEach(function (a) { a.remove(); });
+    }
+  }
+</script>
+</body>
+</html>

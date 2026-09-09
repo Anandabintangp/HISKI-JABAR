@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arsip Surat — Portal Pengurus HISKI Jabar</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="../assets/img/favicon.png">
+<link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="portal">
+
+<div class="portal-shell">
+  <aside class="portal-side" id="portalSide"></aside>
+
+  <div class="portal-main">
+    <header class="portal-top" id="portalTop"></header>
+
+    <div class="portal-body">
+      <section class="panel">
+        <div class="panel-head">
+          <h3>Buku agenda surat</h3>
+          <span class="badge badge-neutral" id="suratInfo">—</span>
+          <div class="spacer"></div>
+          <button class="btn btn-primary btn-sm" id="btnTambahSurat">+ Catat surat baru</button>
+        </div>
+
+        <div class="toolbar">
+          <input type="search" id="cariSurat" placeholder="Cari nomor, perihal, pengirim, atau klasifikasi…" aria-label="Cari surat">
+          <select id="filterJenis" aria-label="Saring jenis surat">
+            <option value="">Semua jenis</option>
+            <option value="masuk">Surat masuk</option>
+            <option value="keluar">Surat keluar</option>
+          </select>
+          <select id="filterStatus" aria-label="Saring status">
+            <option value="">Semua status</option>
+            <option>Baru</option>
+            <option>Didisposisi</option>
+            <option>Terkirim</option>
+            <option>Selesai</option>
+          </select>
+          <select id="filterTahun" aria-label="Saring tahun">
+            <option value="">Semua tahun</option>
+            <option>2026</option>
+            <option>2025</option>
+          </select>
+          <button class="row-action" id="resetFilter">Atur ulang</button>
+        </div>
+
+        <div class="panel-body flush">
+          <div class="table-wrap" style="border:none;border-radius:0">
+            <table class="data">
+              <thead>
+                <tr><th>Nomor surat</th><th>Perihal</th><th>Jenis &amp; pihak</th><th>Tanggal</th><th>Status</th><th></th></tr>
+              </thead>
+              <tbody id="suratBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <div class="note">
+        <b>Catatan demo.</b> Berkas PDF asli belum ditautkan — tombol <i>Unduh PDF</i> hanya menampilkan pemberitahuan.
+        Pada versi produksi, setiap surat menyimpan tautan ke berkas pindaian di penyimpanan aman dan hanya dapat dibuka pengurus yang berwenang.
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/portal.js"></script>
+<script>
+  if (HISKI_PORTAL.pasangKerangka({
+    aktif: 'surat',
+    judul: 'Arsip Surat',
+    sub: 'Surat masuk dan surat keluar komisariat'
+  })) HISKI_PORTAL.halamanSurat();
+</script>
+</body>
+</html>

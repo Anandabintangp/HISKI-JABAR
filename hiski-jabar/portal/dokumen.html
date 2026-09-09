@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dokumen — Portal Pengurus HISKI Jabar</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="../assets/img/favicon.png">
+<link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="portal">
+
+<div class="portal-shell">
+  <aside class="portal-side" id="portalSide"></aside>
+
+  <div class="portal-main">
+    <header class="portal-top" id="portalTop"></header>
+
+    <div class="portal-body">
+      <section class="panel">
+        <div class="panel-head">
+          <h3>Dokumen organisasi</h3>
+          <div class="spacer"></div>
+          <button class="btn btn-primary btn-sm" onclick="HISKI_PORTAL.toast('Demo: unggah dokumen aktif setelah tersambung ke penyimpanan.')">+ Unggah dokumen</button>
+        </div>
+
+        <div class="toolbar">
+          <input type="search" id="cariDokumen" placeholder="Cari nama dokumen atau pemilik…" aria-label="Cari dokumen">
+          <select id="filterKategori" aria-label="Saring kategori"></select>
+        </div>
+
+        <div class="panel-body">
+          <div class="grid" id="dokumenGrid" style="grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px"></div>
+        </div>
+      </section>
+
+      <div class="note">
+        <b>Susunan berkas yang disarankan.</b> Dasar organisasi (AD/ART, SK) · Perencanaan (program kerja, proposal) ·
+        Notula rapat · Laporan &amp; keuangan · Kerja sama · Templat surat. Penamaan berkas sebaiknya seragam:
+        <span class="mono">kategori_judul-singkat_tanggal.pdf</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/portal.js"></script>
+<script>
+  if (HISKI_PORTAL.pasangKerangka({
+    aktif: 'dokumen',
+    judul: 'Dokumen',
+    sub: 'Berkas dasar organisasi, notula, laporan, dan templat'
+  })) HISKI_PORTAL.halamanDokumen();
+</script>
+</body>
+</html>

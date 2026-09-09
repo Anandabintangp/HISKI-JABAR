@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Masuk — Portal Pengurus HISKI Jabar</title>
+<meta name="description" content="Portal internal pengurus HISKI Komisariat Jawa Barat.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="../assets/img/favicon.png">
+<link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="portal">
+
+<div class="auth-wrap">
+
+  <aside class="auth-side">
+    <a class="brand" href="../index.html">
+      <img class="brand-mark" src="../assets/img/lambang-hiski-putih.png" width="34" height="48" alt="Lambang HISKI">
+      <span class="brand-text"><strong style="color:#fff">HISKI</strong><small style="color:#8FA4BC">Komisariat Jawa Barat</small></span>
+    </a>
+
+    <div>
+      <span class="eyebrow">Portal Internal</span>
+      <h2>Arsip surat dan dokumen organisasi, dalam satu tempat.</h2>
+      <p>Pengurus dapat menelusuri surat masuk dan keluar, membaca disposisi, serta membuka dokumen resmi komisariat tanpa perlu mencari di percakapan atau folder yang berserakan.</p>
+      <ul class="check-list" style="margin-top:26px">
+        <li style="color:#C6D4E3">Arsip surat masuk &amp; keluar dengan penomoran resmi</li>
+        <li style="color:#C6D4E3">Pratinjau surat lengkap dengan kop dan tanda tangan</li>
+        <li style="color:#C6D4E3">Dokumen dasar organisasi, notula, dan laporan</li>
+        <li style="color:#C6D4E3">Basis data keanggotaan komisariat</li>
+      </ul>
+    </div>
+
+    <p class="small" style="color:#7F93AB;margin:0">Halaman ini hanya untuk pengurus. Jika Anda anggota umum, silakan kembali ke <a href="../index.html" style="color:#C6D4E3">situs publik</a>.</p>
+  </aside>
+
+  <main class="auth-main">
+    <div class="auth-card">
+      <a class="brand" href="../index.html">
+        <img class="brand-mark" src="../assets/img/lambang-hiski.png" width="34" height="48" alt="Lambang HISKI">
+        <span class="brand-text"><strong>HISKI Jabar</strong><small>Portal Pengurus</small></span>
+      </a>
+
+      <div class="card" style="padding:32px">
+        <h1 style="font-size:1.6rem;margin-bottom:6px">Masuk ke portal</h1>
+        <p class="small muted" style="margin-bottom:24px">Gunakan surel pengurus yang terdaftar di sekretariat.</p>
+
+        <p id="loginPesan" class="note" hidden style="margin-bottom:18px"></p>
+
+        <form class="form-grid" id="formLogin" novalidate>
+          <div class="field">
+            <label for="email">Surel pengurus</label>
+            <input id="email" name="email" type="email" autocomplete="username" required placeholder="nama@hiskijabar.or.id">
+          </div>
+          <div class="field">
+            <label for="sandi">Kata sandi</label>
+            <input id="sandi" name="sandi" type="password" autocomplete="current-password" required placeholder="••••••••">
+          </div>
+          <button class="btn btn-primary btn-block" type="submit">Masuk</button>
+        </form>
+
+        <div class="note" style="margin-top:24px">
+          <b>Akun demo</b> — klik untuk mengisi otomatis (kata sandi <span class="mono">hiski2026</span>):
+          <div style="display:grid;gap:7px;margin-top:11px">
+            <button class="row-action" style="text-align:left" data-isi-akun="ketua@hiskijabar.or.id">Ketua — ketua@hiskijabar.or.id</button>
+            <button class="row-action" style="text-align:left" data-isi-akun="sekretaris@hiskijabar.or.id">Sekretaris — sekretaris@hiskijabar.or.id</button>
+            <button class="row-action" style="text-align:left" data-isi-akun="bendahara@hiskijabar.or.id">Bendahara — bendahara@hiskijabar.or.id (akses terbatas)</button>
+          </div>
+        </div>
+      </div>
+
+      <p class="small muted" style="text-align:center;margin-top:20px">
+        Ini purwarupa. Autentikasi berjalan di peramban dan belum aman untuk data sungguhan.
+      </p>
+    </div>
+  </main>
+</div>
+
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/portal.js"></script>
+<script>HISKI_PORTAL.pasangLogin();</script>
+</body>
+</html>

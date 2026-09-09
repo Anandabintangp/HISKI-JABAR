@@ -1,0 +1,43 @@
+# =========================================================================
+# Berkas ini untuk HOSTING SENDIRI (cPanel / Apache), bukan untuk Vercel.
+# Cara pakai: unggah seluruh isi folder ke public_html, lalu ganti nama
+# berkas ini menjadi  .htaccess  (dengan titik di depan, tanpa .txt).
+# =========================================================================
+
+# Halaman 404 kustom
+ErrorDocument 404 /404.html
+
+# Paksa HTTPS
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+</IfModule>
+
+# Header keamanan dasar
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+  <FilesMatch "^/portal/">
+    Header set X-Robots-Tag "noindex, nofollow"
+  </FilesMatch>
+</IfModule>
+
+# Kompresi
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json image/svg+xml
+</IfModule>
+
+# Masa simpan singgahan berkas statis
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 7 days"
+  ExpiresByType application/javascript "access plus 7 days"
+  ExpiresByType image/svg+xml "access plus 30 days"
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+# Sembunyikan daftar isi folder
+Options -Indexes
